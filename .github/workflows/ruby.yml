@@ -18,5 +18,6 @@ jobs:
       - name: Rubocop
         run: bundle exec rubocop
       - name: RSpec
-        run: bundle exec rspec ./lab1/
-        run: bundle exec rspec ./lab2/
+        run: |
+          bundle exec rspec ./lab1/
+          bundle exec rspec ./lab2/
