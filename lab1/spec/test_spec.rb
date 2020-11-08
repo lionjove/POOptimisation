@@ -1,27 +1,34 @@
 # frozen_string_literal: true
 
-require_relative '../converter_functions'
+require_relative '../temperature_converter'
 
-RSpec.describe 'ConvertCToK' do
-  it '1 -> 274.15' do
-    expect(celsius_to_kelvin(1)).to be_within(0.01).of(274.15)
+describe TemperatureConverter do
+  describe 'Temperature from kelvin' do
+    converter = TemperatureConverter.new
+    converter.from_kelvin(279.75)
+
+    it 'Check conrersion from kelvin' do
+      expect(converter.as_celsius).to be_within(0.01).of(6.6)
+      expect(converter.as_fahrenheit).to be_within(0.01).of(43.88)
+    end
   end
-end
 
-RSpec.describe 'ConvertFToK' do
-  it '1 -> 274.15' do
-    expect(fahrenheit_to_kelvin(1)).to be_within(0.01).of(255.928)
+  describe 'Temperature from celsius' do
+    converter = TemperatureConverter.new
+    converter.from_celsius(23.5)
+
+    it 'Check conrersion from celsius' do
+      expect(converter.as_kelvin).to be_within(0.01).of(296.65)
+      expect(converter.as_fahrenheit).to be_within(0.01).of(74.3)
+    end
   end
-end
 
-RSpec.describe 'ConvertKToC' do
-  it '1 -> 274.15' do
-    expect(kelvin_to_celsius(275.15)).to be_within(0.01).of(2)
-  end
-end
-
-RSpec.describe 'ConvertKToF' do
-  it '1 -> 274.15' do
-    expect(kelvin_to_fahrenheit(275)).to be_within(0.01).of(35.33)
+  describe 'Temperature from fahrenheit' do
+    converter = TemperatureConverter.new
+    converter.from_fahrenheit(96.32)
+    it 'Check conrersion from fahrenheit' do
+      expect(converter.as_kelvin).to be_within(0.01).of(308.88333)
+      expect(converter.as_celsius).to be_within(0.01).of(35.733333)
+    end
   end
 end
