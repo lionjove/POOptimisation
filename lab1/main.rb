@@ -8,21 +8,23 @@ result_type = gets.chop
 
 converter = TemperatureConverter.new
 
-if input_type == 'C'
+case input_type
+when 'C'
   converter.from_celsius(input_num)
-elsif input_type == 'F'
+when 'F'
   converter.from_fahrenheit(input_num)
-elsif result_type == 'K'
+when 'K'
   converter.from_kelvin(input_num)
 else
   puts 'Unknown input type.'
 end
 
-if result_type == 'C'
+case result_type
+when 'C'
   puts converter.as_celsius
-elsif result_type == 'F'
+when 'F'
   puts converter.as_fahrenheit
-elsif result_type == 'K'
+when 'K'
   puts converter.as_kelvin
 else
   puts 'Unknown result type.'
